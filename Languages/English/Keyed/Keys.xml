@@ -6,4 +6,8 @@
 	<AutoReplaceThickRoof>Auto add Build Roof Area to Mountain Roof</AutoReplaceThickRoof>
 	<ForceAddRoofArea>Auto add Build Roof Area to entire room, regardless of roof (Respect the Remove Roof Area) (See Tooltip)</ForceAddRoofArea>
 	<TooltipForceAddRoofArea>It's disable, if toggle in the above is not enabled.</TooltipForceAddRoofArea>
+	<AllowPocketMaps>Allow roof replacement in pocket maps (Anomaly void, undercave, space pockets)</AllowPocketMaps>
+	<TooltipAllowPocketMaps>Off by default: those special dimensions manage their own roofs. Enable only if you actually want to convert them.</TooltipAllowPocketMaps>
+	<OnlyVanillaMountainRoof>Only replace vanilla mountain roof (ignore modded thick roofs)</OnlyVanillaMountainRoof>
+	<TooltipOnlyVanillaMountainRoof>Off by default: any thick roof is replaceable, like the original mod. Enable to restrict replacement to the vanilla mountain roof only.</TooltipOnlyVanillaMountainRoof>
 </LanguageData>

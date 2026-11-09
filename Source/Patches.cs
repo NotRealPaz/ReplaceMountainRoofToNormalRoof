@@ -34,18 +34,32 @@ public static class Patches
 
   private static bool Enabled => ReplaceMountainRoofToNormalRoof.Settings?.enable ?? false;
 
-  /// <summary>Roof replacement only operates on world maps. Pocket maps (the
-  /// Anomaly void and similar special dimensions) are excluded.</summary>
+  /// <summary>Roof replacement operates on world maps by default. Pocket maps (the
+  /// Anomaly void, the pit-gate undercave, Odyssey pocket dimensions and modded
+  /// dimensions) are excluded unless the player opts in via settings.</summary>
   private static bool RoofReplacementAllowed(Map map)
   {
-    return map != null && !map.IsPocketMap;
+    if (map == null) return false;
+    if (map.IsPocketMap) return ReplaceMountainRoofToNormalRoof.Settings?.allowPocketMaps ?? false;
+    return true;
+  }
+
+  /// <summary>True for roofs the mod may replace: any thick roof by default (the
+  /// original mod's behavior, including modded thick roofs), or only the vanilla
+  /// mountain roof when the corresponding setting is enabled.</summary>
+  private static bool IsReplaceableRoof(RoofDef roof)
+  {
+    if (roof == null || !roof.isThickRoof) return false;
+    if (ReplaceMountainRoofToNormalRoof.Settings?.onlyVanillaMountainRoof ?? false)
+    {
+      return roof == RoofDefOf.RoofRockThick;
+    }
+    return true;
   }
 
   private static bool IsThickRoofAt(IntVec3 c, Map map)
   {
-    if (map == null) return false;
-    RoofDef roof = map.roofGrid.RoofAt(c);
-    return roof != null && roof.isThickRoof;
+    return map != null && IsReplaceableRoof(map.roofGrid.RoofAt(c));
   }
 
   // ------------------------------------------------------------------
@@ -197,7 +211,7 @@ public static class Patches
       {
         RoofDef roof = map.roofGrid.RoofAt(cell);
         if (roof == null) continue; // unroofed: vanilla already handled it
-        if (!settings.forceAddRoofArea && !roof.isThickRoof) continue;
+        if (!settings.forceAddRoofArea && !IsReplaceableRoof(roof)) continue;
         if (map.areaManager.NoRoof[cell]) continue; // respect remove-roof area
         if (!RoofCollapseUtility.WithinRangeOfRoofHolder(cell, map, assumeNonNoRoofCellsAreRoofed: true)) continue;
 

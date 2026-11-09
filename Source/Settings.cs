@@ -14,11 +14,17 @@ public class Settings : ModSettings
   public bool autoReplaceThickRoof = true;
   public bool forceAddRoofArea = false;
 
+  // All default false: shipped behavior is identical to the pre-setting state.
+  public bool allowPocketMaps = false;
+  public bool onlyVanillaMountainRoof = false;
+
   public override void ExposeData()
   {
     base.ExposeData();
     Scribe_Values.Look(ref enable, "enable", true);
     Scribe_Values.Look(ref autoReplaceThickRoof, "autoReplaceThickRoof", true);
     Scribe_Values.Look(ref forceAddRoofArea, "forceAddRoofArea", false);
+    Scribe_Values.Look(ref allowPocketMaps, "allowPocketMaps", false);
+    Scribe_Values.Look(ref onlyVanillaMountainRoof, "onlyVanillaMountainRoof", false);
   }
 }

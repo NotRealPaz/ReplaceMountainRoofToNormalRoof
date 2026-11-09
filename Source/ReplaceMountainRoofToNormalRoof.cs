@@ -32,6 +32,11 @@ public class ReplaceMountainRoofToNormalRoof : Mod
     list.CheckboxLabeled("AutoReplaceThickRoof".Translate(), ref Settings.autoReplaceThickRoof);
     list.CheckboxLabeled("ForceAddRoofArea".Translate(), ref Settings.forceAddRoofArea,
       "TooltipForceAddRoofArea".Translate());
+    list.GapLine(12f);
+    list.CheckboxLabeled("AllowPocketMaps".Translate(), ref Settings.allowPocketMaps,
+      "TooltipAllowPocketMaps".Translate());
+    list.CheckboxLabeled("OnlyVanillaMountainRoof".Translate(), ref Settings.onlyVanillaMountainRoof,
+      "TooltipOnlyVanillaMountainRoof".Translate());
     list.End();
     base.DoSettingsWindowContents(inRect);
   }
