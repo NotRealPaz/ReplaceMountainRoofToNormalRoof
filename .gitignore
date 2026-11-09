@@ -1,0 +1,12 @@
+# build outputs
+bin/
+obj/
+Legacy/
+1.7/
+
+# local game reference DLLs (not redistributable) — see README
+References/
+
+*.user
+.vs/
+.idea/

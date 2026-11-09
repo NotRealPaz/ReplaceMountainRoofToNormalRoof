@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;net10.0</TargetFrameworks>
+    <AssemblyName>ReplaceMountainRoofToNormalRoof</AssemblyName>
+    <RootNamespace>ReplaceMountainRoofToNormalRoof</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>none</DebugType>
+    <NoWarn>$(NoWarn);NU1701;CS0618</NoWarn>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <!-- Legacy net472 build: one DLL shared by 1.5 and 1.6 (both Unity/Mono), compiled
+       against the OLDEST supported version's references via the Krafs.Rimworld.Ref
+       NuGet package ("compile against the oldest, run on newer" rule). The package
+       provides Assembly-CSharp + UnityEngine reference assemblies automatically. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="Lib.Harmony" Version="2.3.3" ExcludeAssets="runtime" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4409" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <!-- 1.7 build: native Waylith / .NET 10. Reference DLLs ship with the game and are
+       not redistributable, so they are resolved from a local folder or your install:
+         dotnet build -p:RimWorldDir=/path/to/RimWorld
+       (defaults to the References/ folder in the repo root; see README) -->
+  <PropertyGroup>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">$(MSBuildProjectDirectory)\..\References</RimWorldDir>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.3" ExcludeAssets="runtime" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RimWorldDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityStubs">
+      <HintPath>$(RimWorldDir)\UnityStubs.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Waylith">
+      <HintPath>$(RimWorldDir)\Waylith.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Copy each TFM's output into its version folder -->
+  <Target Name="CopyToVersionFolders" AfterTargets="Build">
+    <ItemGroup>
+      <OutputDll Include="$(TargetPath)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(OutputDll)" DestinationFolder="$(MSBuildProjectDirectory)\..\$(GameVersionFolder)\Assemblies\" />
+  </Target>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+    <GameVersionFolder>Legacy</GameVersionFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <GameVersionFolder>1.7</GameVersionFolder>
+  </PropertyGroup>
+
+</Project>

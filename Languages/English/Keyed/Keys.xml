@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<Enable>Enable</Enable>
+	<ReplaceMountainRoofToNormalRoof>Replace Mountain Roof To Normal Roof</ReplaceMountainRoofToNormalRoof>
+	<AutoAddBuildRoofAreaExplain>These Setting are good for Mountain Base</AutoAddBuildRoofAreaExplain>
+	<AutoReplaceThickRoof>Auto add Build Roof Area to Mountain Roof</AutoReplaceThickRoof>
+	<ForceAddRoofArea>Auto add Build Roof Area to entire room, regardless of roof (Respect the Remove Roof Area) (See Tooltip)</ForceAddRoofArea>
+	<TooltipForceAddRoofArea>It's disable, if toggle in the above is not enabled.</TooltipForceAddRoofArea>
+</LanguageData>
