@@ -35,8 +35,8 @@ public class ReplaceMountainRoofToNormalRoof : Mod
     list.GapLine(12f);
     list.CheckboxLabeled("AllowPocketMaps".Translate(), ref Settings.allowPocketMaps,
       "TooltipAllowPocketMaps".Translate());
-    list.CheckboxLabeled("OnlyVanillaMountainRoof".Translate(), ref Settings.onlyVanillaMountainRoof,
-      "TooltipOnlyVanillaMountainRoof".Translate());
+    list.CheckboxLabeled("AllowModdedThickRoofs".Translate(), ref Settings.allowModdedThickRoofs,
+      "TooltipAllowModdedThickRoofs".Translate());
     list.End();
     base.DoSettingsWindowContents(inRect);
   }

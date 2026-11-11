@@ -14,9 +14,9 @@ public class Settings : ModSettings
   public bool autoReplaceThickRoof = true;
   public bool forceAddRoofArea = false;
 
-  // All default false: shipped behavior is identical to the pre-setting state.
+  // All default false: conservative opt-ins over public APIs.
   public bool allowPocketMaps = false;
-  public bool onlyVanillaMountainRoof = false;
+  public bool allowModdedThickRoofs = false;
 
   public override void ExposeData()
   {
@@ -25,6 +25,6 @@ public class Settings : ModSettings
     Scribe_Values.Look(ref autoReplaceThickRoof, "autoReplaceThickRoof", true);
     Scribe_Values.Look(ref forceAddRoofArea, "forceAddRoofArea", false);
     Scribe_Values.Look(ref allowPocketMaps, "allowPocketMaps", false);
-    Scribe_Values.Look(ref onlyVanillaMountainRoof, "onlyVanillaMountainRoof", false);
+    Scribe_Values.Look(ref allowModdedThickRoofs, "allowModdedThickRoofs", false);
   }
 }

@@ -8,6 +8,6 @@
 	<TooltipForceAddRoofArea>It's disable, if toggle in the above is not enabled.</TooltipForceAddRoofArea>
 	<AllowPocketMaps>Allow roof replacement in pocket maps (Anomaly void, undercave, space pockets)</AllowPocketMaps>
 	<TooltipAllowPocketMaps>Off by default: those special dimensions manage their own roofs. Enable only if you actually want to convert them.</TooltipAllowPocketMaps>
-	<OnlyVanillaMountainRoof>Only replace vanilla mountain roof (ignore modded thick roofs)</OnlyVanillaMountainRoof>
-	<TooltipOnlyVanillaMountainRoof>Off by default: any thick roof is replaceable, like the original mod. Enable to restrict replacement to the vanilla mountain roof only.</TooltipOnlyVanillaMountainRoof>
+	<AllowModdedThickRoofs>Allow replacing modded thick roofs</AllowModdedThickRoofs>
+	<TooltipAllowModdedThickRoofs>Off by default: only the vanilla mountain roof is replaced. Enable to also replace thick roofs added by other mods.</TooltipAllowModdedThickRoofs>
 </LanguageData>

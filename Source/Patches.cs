@@ -44,15 +44,15 @@ public static class Patches
     return true;
   }
 
-  /// <summary>True for roofs the mod may replace: any thick roof by default (the
-  /// original mod's behavior, including modded thick roofs), or only the vanilla
-  /// mountain roof when the corresponding setting is enabled.</summary>
+  /// <summary>True for roofs the mod may replace: the vanilla mountain roof always,
+  /// plus thick roofs added by other mods when the corresponding setting is enabled.
+  /// </summary>
   private static bool IsReplaceableRoof(RoofDef roof)
   {
     if (roof == null || !roof.isThickRoof) return false;
-    if (ReplaceMountainRoofToNormalRoof.Settings?.onlyVanillaMountainRoof ?? false)
+    if (roof != RoofDefOf.RoofRockThick)
     {
-      return roof == RoofDefOf.RoofRockThick;
+      return ReplaceMountainRoofToNormalRoof.Settings?.allowModdedThickRoofs ?? false;
     }
     return true;
   }
