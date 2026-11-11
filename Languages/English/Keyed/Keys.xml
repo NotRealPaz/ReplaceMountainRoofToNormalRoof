@@ -2,12 +2,12 @@
 <LanguageData>
 	<Enable>Enable</Enable>
 	<ReplaceMountainRoofToNormalRoof>Replace Mountain Roof To Normal Roof</ReplaceMountainRoofToNormalRoof>
-	<AutoAddBuildRoofAreaExplain>These Setting are good for Mountain Base</AutoAddBuildRoofAreaExplain>
-	<AutoReplaceThickRoof>Auto add Build Roof Area to Mountain Roof</AutoReplaceThickRoof>
-	<ForceAddRoofArea>Auto add Build Roof Area to entire room, regardless of roof (Respect the Remove Roof Area) (See Tooltip)</ForceAddRoofArea>
-	<TooltipForceAddRoofArea>It's disable, if toggle in the above is not enabled.</TooltipForceAddRoofArea>
-	<AllowPocketMaps>Allow roof replacement in pocket maps (Anomaly void, undercave, space pockets)</AllowPocketMaps>
-	<TooltipAllowPocketMaps>Off by default: those special dimensions manage their own roofs. Enable only if you actually want to convert them.</TooltipAllowPocketMaps>
-	<AllowModdedThickRoofs>Allow replacing modded thick roofs</AllowModdedThickRoofs>
-	<TooltipAllowModdedThickRoofs>Off by default: only the vanilla mountain roof is replaced. Enable to also replace thick roofs added by other mods.</TooltipAllowModdedThickRoofs>
+	<AutoAddBuildRoofAreaExplain>Recommended for mountain bases</AutoAddBuildRoofAreaExplain>
+	<AutoReplaceThickRoof>Automatically add a Build Roof area to mountain roof in enclosed rooms</AutoReplaceThickRoof>
+	<ForceAddRoofArea>Also add the Build Roof area to the whole room, even parts without a roof</ForceAddRoofArea>
+	<TooltipForceAddRoofArea>Only works when the option above is on. Roofs are never added where you placed a Remove Roof area.</TooltipForceAddRoofArea>
+	<AllowPocketMaps>Allow replacing roofs in special places (the void, the undercave)</AllowPocketMaps>
+	<TooltipAllowPocketMaps>Off by default: these places are meant to keep their special roofs. Turn on only if you really want to change them.</TooltipAllowPocketMaps>
+	<AllowModdedThickRoofs>Also replace mountain-style roofs added by other mods</AllowModdedThickRoofs>
+	<TooltipAllowModdedThickRoofs>Off by default: only the normal mountain roof is replaced. Turn on if other mods add their own mountain roofs and you want to replace those too.</TooltipAllowModdedThickRoofs>
 </LanguageData>
